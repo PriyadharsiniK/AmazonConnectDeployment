@@ -79,13 +79,17 @@ aws dynamodb put-item --table-name OrderDetails --item '{"OrderNo": {"S": "1297"
 aws dynamodb put-item --table-name OrderDetails --item '{"OrderNo": {"S": "1101"}, "CustomerName": {"S": "Lara Cameron"}, "Status": {"S": "Shipped"}}'
 
 aws dynamodb put-item --table-name LoyaltyMembers --item '{"MemberID": {"S": "115296801"}, "MobileNo": {"S": "+1XXXXXXXXXX"}, "Name": {"S": "Joseph Murphy"}}'
+
 replace XXXXXXXXXX with the mobile number with customer mobile number, who has to be treated as Loyalty Member.
+
 For Windows CMD:
+
 aws dynamodb put-item --table-name OrderDetails1 --item "{ \"OrderNo\": { \"S\": \"1297\" }, \"CustomerName\": { \"S\": \"John Doe\" }, \"Status\": { \"S\": \"Processed\" } }"
 
 aws dynamodb put-item --table-name OrderDetails1 --item "{ \"OrderNo\": { \"S\": \"1101\" }, \"CustomerName\": { \"S\": \"Lara Cameron\" }, \"Status\": { \"S\": \"Shipped\" } }"
 
 aws dynamodb put-item --table-name LoyaltyMembers --item "{ \"MemberID\": { \"S\": \"115296801\" }, \"MobileNo\": { \"S\": \"+1XXXXXXXXXX\" }, \"Name\": { \"S\": \"Joseph Murphy\" } }"
+
 replace XXXXXXXXXX with the mobile number with customer mobile number, who has to be treated as Loyalty Member.
 
 6. Claim a Phone Number and Attach the IV Inbound Flow
