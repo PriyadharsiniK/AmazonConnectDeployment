@@ -54,18 +54,23 @@ Once the CloudFormation stack is deployed, you need to manually import the conta
 #### **For macOS/Linux:**
 
 ```sh
-aws dynamodb put-item --table-name OrderDetails1 --item '{"OrderNo": {"S": "1297"}, "CustomerName": {"S": "John Doe"}, "Status": {"S": "Processed"}}' 
+aws dynamodb put-item --table-name OrderDetails --item '{"OrderNo": {"S": "1297"}, "CustomerName": {"S": "John Doe"}, "Status": {"S": "Processed"}}' 
 
-aws dynamodb put-item --table-name OrderDetails1 --item '{"OrderNo": {"S": "1298"}, "CustomerName": {"S": "Jane Smith"}, "Status": {"S": "Pending"}}'
+aws dynamodb put-item --table-name OrderDetails --item '{"OrderNo": {"S": "1298"}, "CustomerName": {"S": "Jane Smith"}, "Status": {"S": "Pending"}}'
+
+aws dynamodb put-item --table-name LoyaltyMembers --item '{"MemberID": {"S": "115296801"}, "MobileNo": {"S": "+1XXXXXXXXXX"}, "Name": {"S": "Joseph Murphy"}}'
 ```
+##### replace XXXXXXXXXX with the mobile number of the customer who has to be treated as Loyalty members. 
 
 #### **For Windows CMD:**
 ```sh
 aws dynamodb put-item --table-name OrderDetails1 --item "{ \"OrderNo\": { \"S\": \"1297\" }, \"CustomerName\": { \"S\": \"John Doe\" }, \"Status\": { \"S\": \"Processed\" } }"
 
 aws dynamodb put-item --table-name OrderDetails1 --item "{ \"OrderNo\": { \"S\": \"1298\" }, \"CustomerName\": { \"S\": \"Jane Smith\" }, \"Status\": { \"S\": \"Pending\" } }"
-```
 
+aws dynamodb put-item --table-name LoyaltyMembers --item "{ \"MemberID\": { \"S\": \"115296801\" }, \"MobileNo\": { \"S\": \"+1XXXXXXXXXX\" }, \"Name\": { \"S\": \"Joseph Murphy\" } }"
+```
+##### replace XXXXXXXXXX with the mobile number of the customer who has to be treated as Loyalty members.
 ---
 
 ### 📞 **6. Claim a Phone Number and Attach the IV Inbound Flow**
