@@ -1,6 +1,6 @@
 ## 🏢 **Amazon Connect Contact Center Deployment Guide**
 
-For Full Contact Center Documentation, Refer to: InterVision Contact Center Documentation[text](InterVision_Contact_Center.md)
+For Full Contact Center Documentation, Refer to [InterVision Contact Center Documentation](InterVision_Contact_Center.md)
 
 
 ### 🛠 **1. Install the CloudFormation Template**
