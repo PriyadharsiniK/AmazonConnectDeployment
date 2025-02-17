@@ -1,0 +1,272 @@
+Metadata:
+  AWSToolsMetrics:
+    IaC_Generator: arn:aws:cloudformation:us-west-2:816069160266:generatedTemplate/b4942918-3b2b-4617-8649-05040fb20e0e
+Resources:
+  BusinessHours:
+    Type: AWS::Connect::HoursOfOperation
+    Properties:
+      InstanceArn: "arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff"
+      Name: "Call Center Hours"
+      Description: "Standard Business Hours for Contact Center"
+      TimeZone: "US/Pacific"
+      Config:
+        - Day: MONDAY
+          StartTime:
+            Hours: 9
+            Minutes: 0
+          EndTime:
+            Hours: 17
+            Minutes: 0
+        - Day: TUESDAY
+          StartTime:
+            Hours: 9
+            Minutes: 0
+          EndTime:
+            Hours: 17
+            Minutes: 0
+        - Day: WEDNESDAY
+          StartTime:
+            Hours: 9
+            Minutes: 0
+          EndTime:
+            Hours: 17
+            Minutes: 0
+        - Day: THURSDAY
+          StartTime:
+            Hours: 9
+            Minutes: 0
+          EndTime:
+            Hours: 17
+            Minutes: 0
+        - Day: FRIDAY
+          StartTime:
+            Hours: 9
+            Minutes: 0
+          EndTime:
+            Hours: 17
+            Minutes: 0
+  ConnectQueue00instancef84e15b2c4da4ef4bcb699c86cfadfffqueue405f0138d35d4e3e86582258a1f801cd00EZa6R:
+    UpdateReplacePolicy: Retain
+    Type: AWS::Connect::Queue
+    DeletionPolicy: Retain
+    Properties:
+      Status: ENABLED
+      HoursOfOperationArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/operating-hours/9f11c12f-e423-4fdb-b138-f03e42478431
+      Description: Queue for loyalty members
+      InstanceArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff
+      OutboundEmailConfig: {}
+      QuickConnectArns:
+        - arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/transfer-destination/ebd7d49c-49a3-4093-8125-273c14e524eb
+      OutboundCallerConfig: {}
+      Tags: []
+      Name: VIP Customer Queue
+  ConnectRoutingProfile00instancef84e15b2c4da4ef4bcb699c86cfadfffroutingprofileb9a04ba0d1b84a5b9fc5e72a031591d300qWvGc:
+    UpdateReplacePolicy: Retain
+    Type: AWS::Connect::RoutingProfile
+    DeletionPolicy: Retain
+    Properties:
+      Description: Agents to assist in Order status
+      MediaConcurrencies:
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: CHAT
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: TASK
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: VOICE
+      InstanceArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff
+      AgentAvailabilityTimer: TIME_SINCE_LAST_ACTIVITY
+      QueueConfigs:
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/09fcaad4-c746-41d5-a849-403e39142e46
+            Channel: CHAT
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/09fcaad4-c746-41d5-a849-403e39142e46
+            Channel: EMAIL
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/09fcaad4-c746-41d5-a849-403e39142e46
+            Channel: TASK
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/09fcaad4-c746-41d5-a849-403e39142e46
+            Channel: VOICE
+      DefaultOutboundQueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/09fcaad4-c746-41d5-a849-403e39142e46
+      Tags: []
+      Name: Order Status
+  ConnectRoutingProfile00instancef84e15b2c4da4ef4bcb699c86cfadfffroutingprofile4a847bf05805430fa1efcf1ca292376a00luK4t:
+    UpdateReplacePolicy: Retain
+    Type: AWS::Connect::RoutingProfile
+    DeletionPolicy: Retain
+    Properties:
+      Description: VIP queue
+      MediaConcurrencies:
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: CHAT
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: TASK
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: VOICE
+      InstanceArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff
+      AgentAvailabilityTimer: TIME_SINCE_LAST_ACTIVITY
+      QueueConfigs:
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/405f0138-d35d-4e3e-8658-2258a1f801cd
+            Channel: CHAT
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/405f0138-d35d-4e3e-8658-2258a1f801cd
+            Channel: TASK
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/405f0138-d35d-4e3e-8658-2258a1f801cd
+            Channel: VOICE
+      DefaultOutboundQueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/405f0138-d35d-4e3e-8658-2258a1f801cd
+      Tags: []
+      Name: VIP queue
+  ConnectQueue00instancef84e15b2c4da4ef4bcb699c86cfadfffqueuee6845535f9c94fc186f4fe102434928b00sOzeT:
+    UpdateReplacePolicy: Retain
+    Type: AWS::Connect::Queue
+    DeletionPolicy: Retain
+    Properties:
+      Status: ENABLED
+      HoursOfOperationArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/operating-hours/9f11c12f-e423-4fdb-b138-f03e42478431
+      Description: Queue for Issues with payments, invoices, failed transactions
+      InstanceArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff
+      OutboundEmailConfig: {}
+      QuickConnectArns:
+        - arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/transfer-destination/d3b923ee-0570-43d7-97c7-6d72cb7a3c9f
+      OutboundCallerConfig: {}
+      Tags: []
+      Name: Billing and Payment
+  ConnectRoutingProfile00instancef84e15b2c4da4ef4bcb699c86cfadfffroutingprofilebcb6196cb0f24d2cae922c2785e2eec400biY6r:
+    UpdateReplacePolicy: Retain
+    Type: AWS::Connect::RoutingProfile
+    DeletionPolicy: Retain
+    Properties:
+      Description: Returns and refunds
+      MediaConcurrencies:
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: CHAT
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: TASK
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: VOICE
+      InstanceArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff
+      AgentAvailabilityTimer: TIME_SINCE_LAST_ACTIVITY
+      QueueConfigs:
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/5bbdc16e-d99f-44e3-a0d0-58e05f281dee
+            Channel: CHAT
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/5bbdc16e-d99f-44e3-a0d0-58e05f281dee
+            Channel: TASK
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/5bbdc16e-d99f-44e3-a0d0-58e05f281dee
+            Channel: VOICE
+      DefaultOutboundQueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/5bbdc16e-d99f-44e3-a0d0-58e05f281dee
+      Tags: []
+      Name: Returns and refunds
+  ConnectQueue00instancef84e15b2c4da4ef4bcb699c86cfadfffqueue09fcaad4c74641d5a849403e39142e46005r48s:
+    UpdateReplacePolicy: Retain
+    Type: AWS::Connect::Queue
+    DeletionPolicy: Retain
+    Properties:
+      Status: ENABLED
+      HoursOfOperationArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/operating-hours/9f11c12f-e423-4fdb-b138-f03e42478431
+      Description: Order status inquiries and tracking
+      InstanceArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff
+      OutboundEmailConfig: {}
+      QuickConnectArns:
+        - arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/transfer-destination/ebd7d49c-49a3-4093-8125-273c14e524eb
+      OutboundCallerConfig: {}
+      Tags: []
+      Name: Order Support queue
+  ConnectQueue00instancef84e15b2c4da4ef4bcb699c86cfadfffqueue5bbdc16ed99f44e3a0d058e05f281dee00S7gzE:
+    UpdateReplacePolicy: Retain
+    Type: AWS::Connect::Queue
+    DeletionPolicy: Retain
+    Properties:
+      Status: ENABLED
+      HoursOfOperationArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/operating-hours/9f11c12f-e423-4fdb-b138-f03e42478431
+      Description: Queue for Customers requesting refunds, returns, or exchanges
+      InstanceArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff
+      OutboundEmailConfig: {}
+      QuickConnectArns:
+        - arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/transfer-destination/ebd7d49c-49a3-4093-8125-273c14e524eb
+      OutboundCallerConfig: {}
+      Tags: []
+      Name: Returns and Refunds
+  ConnectRoutingProfile00instancef84e15b2c4da4ef4bcb699c86cfadfffroutingprofileff4993e9dfea4697a422ab76d86b047400H1Gj5:
+    UpdateReplacePolicy: Retain
+    Type: AWS::Connect::RoutingProfile
+    DeletionPolicy: Retain
+    Properties:
+      Description: Billing
+      MediaConcurrencies:
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: CHAT
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: TASK
+        - Concurrency: 1
+          CrossChannelBehavior:
+            BehaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+          Channel: VOICE
+      InstanceArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff
+      AgentAvailabilityTimer: TIME_SINCE_LAST_ACTIVITY
+      QueueConfigs:
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/e6845535-f9c9-4fc1-86f4-fe102434928b
+            Channel: CHAT
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/e6845535-f9c9-4fc1-86f4-fe102434928b
+            Channel: TASK
+        - Priority: 1
+          Delay: 0
+          QueueReference:
+            QueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/e6845535-f9c9-4fc1-86f4-fe102434928b
+            Channel: VOICE
+      DefaultOutboundQueueArn: arn:aws:connect:us-west-2:816069160266:instance/f84e15b2-c4da-4ef4-bcb6-99c86cfadfff/queue/e6845535-f9c9-4fc1-86f4-fe102434928b
+      Tags: []
+      Name: Billing
