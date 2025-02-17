@@ -3,7 +3,7 @@
 For Full Contact Center Documentation, Refer to [InterVision Contact Center Documentation](InterVision_Contact_Center.md)
 
 
-### 🛠 **1. Install the CloudFormation Template**
+###  **1. Install the CloudFormation Template**
 The CloudFormation template will create the following resources in your AWS account:
 - **2 DynamoDB Tables**
 - **Hours of Operation**
@@ -20,7 +20,7 @@ The CloudFormation template will create the following resources in your AWS acco
 
 ---
 
-### 🔄 **2. Import the Contact Flow JSON into Amazon Connect**
+###  **2. Import the Contact Flow JSON into Amazon Connect**
 Once the CloudFormation stack is deployed, you need to manually import the contact flow.
 
 #### **Steps to Import the Contact Flow JSON:**
@@ -32,7 +32,7 @@ Once the CloudFormation stack is deployed, you need to manually import the conta
 
 ---
 
-### 🖥️ **3. Upload the Lambda Zip Files in Lambda Console**
+###  **3. Upload the Lambda Zip Files in Lambda Console**
 1. Open the **AWS Lambda Console**.
 2. Click **Create Function → Author from Scratch**.
 3. Give it a **name**, choose **Node.js/Python** runtime (depending on your Lambda code).
@@ -43,7 +43,7 @@ Once the CloudFormation stack is deployed, you need to manually import the conta
 
 ---
 
-### 🤖 **4. Import the Lex Bot Zip File into Amazon Lex Console**
+###  **4. Import the Lex Bot Zip File into Amazon Lex Console**
 1. Open the **AWS Lex Console**.
 2. Click **Create Bot → Import Bot**.
 3. Upload the provided **Lex zip file**.
@@ -52,7 +52,7 @@ Once the CloudFormation stack is deployed, you need to manually import the conta
 
 ---
 
-### 🗄️ **5. Insert Two Rows into the DynamoDB Table**
+###  **5. Insert Two Rows into the DynamoDB Table**
 
 #### **For macOS/Linux:**
 
@@ -76,7 +76,7 @@ aws dynamodb put-item --table-name LoyaltyMembers --item "{ \"MemberID\": { \"S\
 ##### replace XXXXXXXXXX with the mobile number of the customer who has to be treated as Loyalty members.
 ---
 
-### 📞 **6. Claim a Phone Number and Attach the IV Inbound Flow**
+###  **6. Claim a Phone Number and Attach the IV Inbound Flow**
 1. Open the **Amazon Connect Console**.
 2. Navigate to **Routing → Phone Numbers**.
 3. Click **Claim a Number** and select a number available in your region.
@@ -86,7 +86,7 @@ aws dynamodb put-item --table-name LoyaltyMembers --item "{ \"MemberID\": { \"S\
 
 ---
 
-### ✅ **7. Verify Lambda and Lex Integration in the Contact Flow**
+###  **7. Verify Lambda and Lex Integration in the Contact Flow**
 - Make sure the **Invoke Lambda Function** block references the correct **Lambda ARN**.
 - Ensure the **Get Customer Input** block references the correct **Lex bot ARN**.
 - Save and publish the flow after making the updates.

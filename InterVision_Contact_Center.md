@@ -16,9 +16,9 @@ The **InterVision Ecommerce Contact Center** is designed to provide a seamless a
 
 ### **3. Interactive Self-Service (Amazon Lex)**
 The **Amazon Lex bot** presents the caller with multiple options:
-- 📦 **Order Status Inquiry**
-- 🔄 **Returns & Refunds**
-- 💳 **Payment Issues**
+-  **Order Status Inquiry**
+-  **Returns & Refunds**
+-  **Payment Issues**
 
 ### **4. Handling Customer Inquiries with Lex and Lambda**
 #### **Order Status Inquiry**
@@ -33,6 +33,16 @@ The **Amazon Lex bot** presents the caller with multiple options:
 - While waiting in the **queue**, customers are given the **option to request a callback**.
 - If selected, the customer provides a **callback number**, which is stored as a **task** for agents.
 - Agents are notified about pending callback requests and can return the call when available.
+
+### **6. Announcing wait time in queue**
+- While waiting in the **queue**, the wait time is announced for the customer.
+-This helps in improving customer experience.
+
+### **7. CCP Integration in Salesforce**
+- Amazon Connect CCP can be integrated into the Salesforce application using open CTI adapter
+- The agent status and omni channel status can be synced
+- The agents can be presented with a screen pop based on the phone number of the customer who is calling
+![Screenshot](image.png)
 
 ---
 
